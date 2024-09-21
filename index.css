@@ -180,6 +180,7 @@ div.n-queen {
     background-color: #ffd200;
     border-radius: 50%;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 .slider.green::-webkit-slider-thumb {
     background-color: green;
