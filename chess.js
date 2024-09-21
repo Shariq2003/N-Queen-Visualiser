@@ -3,7 +3,6 @@ const slider = document.getElementById("slider");
 const progressBar = document.getElementById("progress-bar")
 const playButton = document.getElementById('play-button');
 const pauseButton = document.getElementById("pause-button");
-
 const queen = '<i class="fas fa-chess-queen" style="color:#000"></i>';
 
 let n, speed, tempSpeed, q, Board = 0;
@@ -50,11 +49,11 @@ class Queen {
             const value = column.innerHTML;
 
             if (value == queen) {
-                column.style.backgroundColor = "#FB5607";
+                column.style.backgroundColor = "#ff0000";
                 currentColumn.innerHTML = "-"
                 return false;
             }
-            column.style.backgroundColor = "#ffca3a";
+            column.style.backgroundColor = "#ddff00";
             await q.delay();
         }
 
@@ -97,8 +96,8 @@ class Queen {
             const row = table.firstChild.childNodes[j];
             for (let k = 0; k < n; ++k)
                 (j + k) & 1
-                    ? (row.getElementsByTagName("td")[k].style.backgroundColor = "#FF9F1C")
-                    : (row.getElementsByTagName("td")[k].style.backgroundColor = "#FCCD90");
+                    ? (row.getElementsByTagName("td")[k].style.backgroundColor = "#03852e")
+                    : (row.getElementsByTagName("td")[k].style.backgroundColor = "#ffffff");
         }
     }
 
