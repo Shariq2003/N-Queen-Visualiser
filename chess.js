@@ -36,9 +36,23 @@ speed = (100 - slider.value) * 10;
 tempSpeed = speed;
 slider.oninput = function () {
     progressBar.style.width = this.value + "%";
-    speed = slider.value;
+    const sliderValue = parseInt(this.value, 10);
+    if (sliderValue <= 25) {
+        progressBar.style.backgroundColor = "green";
+        slider.className = 'slider green';
+    } else if (sliderValue > 25 && sliderValue <= 75) {
+        progressBar.style.backgroundColor = "#ffd200";
+        slider.className = 'slider yellow';
+    } else {
+        progressBar.style.backgroundColor = "red";
+        slider.className = 'slider red';
+    }
+
+    speed = sliderValue;
     speed = (100 - speed) * 10;
-}
+};
+
+
 
 class Queen {
     constructor() {

@@ -177,11 +177,21 @@ div.n-queen {
     -webkit-appearance: none;
     width: 24px;
     height: 24px;
-    background-color: #fa7921;
+    background-color: #ffd200;
     border-radius: 50%;
     cursor: pointer;
 }
+.slider.green::-webkit-slider-thumb {
+    background-color: green;
+}
 
+.slider.yellow::-webkit-slider-thumb {
+    background-color: #ffd200;
+}
+
+.slider.red::-webkit-slider-thumb {
+    background-color: red;
+}
 .slider::-moz-range-thumb {
     width: 24px;
     height: 24px;
@@ -191,12 +201,13 @@ div.n-queen {
 }
 
 #progress-bar {
-    width: 60%;
+    width: 40%;
     height: 8px;
     background: #ffd200;
     border-radius: 10px;
     position: absolute;
     top: 7px;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .play-button {
