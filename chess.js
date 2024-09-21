@@ -5,6 +5,27 @@ const playButton = document.getElementById('play-button');
 const pauseButton = document.getElementById("pause-button");
 const queen = '<i class="fas fa-chess-queen" style="color:#000"></i>';
 
+let isMainContainerVisible = false;
+
+function toggleVisibility() {
+    const landingPage = document.querySelector('.landing-div');
+    const mainContainer = document.querySelector('.n-queen');
+
+    if (isMainContainerVisible) {
+        landingPage.style.display = 'none';
+        mainContainer.style.display = 'flex';
+    } else {
+        landingPage.style.display = 'block';
+        mainContainer.style.display = 'none';
+    }
+}
+window.onload = toggleVisibility;
+document.getElementById('start-button').onclick = function () {
+    isMainContainerVisible = true;
+    toggleVisibility();
+};
+
+
 let n, speed, tempSpeed, q, Board = 0;
 let array = [0, 2, 1, 1, 3, 11, 5, 41, 93];
 
