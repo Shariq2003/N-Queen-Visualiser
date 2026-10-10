@@ -1,58 +1,109 @@
-# N-Queens Visualiser
+<div align="center">
 
-Welcome to the **N-Queens Visualiser**! This web application allows you to visualize the classic N-Queens problem, where the objective is to place N queens on an N x N chessboard such that no two queens threaten each other. This is achieved by ensuring that no two queens share the same row, column, or diagonal.
+# ♛ N-Queens Visualiser
 
-## Table of Contents
+**Watch backtracking happen in real time — place N queens on an N×N board so that no two attack each other, and see every valid arrangement drawn step by step.**
 
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-- [How to Use](#how-to-use)
-- [Contributing](#contributing)
-- [License](#license)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-n--queen--visualiser--topaz.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://n-queen-visualiser-topaz.vercel.app)
 
-## Features
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Font Awesome](https://img.shields.io/badge/Font_Awesome-528DD7?style=flat-square&logo=fontawesome&logoColor=white)
+![GitHub last commit](https://img.shields.io/github/last-commit/Shariq2003/N-Queen-Visualiser?style=flat-square)
 
-- Interactive visualization of the N-Queens problem
-- Ability to input the number of queens (up to 8)
-- Slider for controlling the speed of visualization
-- Displays all possible arrangements of queens for the given input
-- Responsive design for both desktop and mobile
+[The Problem](#-the-problem) · [Algorithm](#-the-algorithm) · [Features](#-features) · [How to Use](#-how-to-use) · [Getting Started](#-getting-started)
 
-## Technologies Used
+</div>
 
-- HTML
-- CSS
-- JavaScript
-- [Font Awesome](https://fontawesome.com/) for icons
+---
 
-## Getting Started
+## 🧩 The Problem
 
-To get a local copy up and running follow these simple steps:
+Place **N** queens on an **N × N** chessboard so that no two queens threaten each other — no two share the same **row**, **column** or **diagonal**.
 
-1. Clone the repository:
+<details>
+<summary><b>📊 How many solutions exist?</b></summary>
 
-   ```bash
-   git clone https://github.com/yourusername/N-Queens-Visualiser.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd N-Queens-Visualiser
-   ```
-3. Open index.html in your web browser.
+<br/>
 
-## How to Use
-1. Enter the number of queens you want to place on the chessboard in the input field.
-2. Use the slider to adjust the speed of the visualization.
-3. Click the Play button to start the visualization.
-4. You can stop the visualization at any time.
+| N | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|
+| **Solutions** | 1 | 0 | 0 | 2 | 10 | 4 | 40 | 92 |
 
+</details>
 
-## Contributing
-Contributions are welcome! Please follow these steps to contribute to this project:
+## 🧠 The Algorithm
 
-1. Fork the repository.
-2. Create a new branch (git checkout -b feature/YourFeature).
-3. Commit your changes (git commit -m 'Add some feature').
-4. Push to the branch (git push origin feature/YourFeature).
-5. Open a Pull Request.
+The visualiser uses **recursive backtracking**, highlighting every check on the board:
+
+```mermaid
+flowchart TD
+    S(["solve(row)"]) --> D{"row == N?"}
+    D -- "yes" --> F(["✅ Board solved"])
+    D -- "no" --> C["Try each column in this row"]
+    C --> V{"Is the square safe?<br/>column · ↖ diagonal · ↗ diagonal"}
+    V -- "safe" --> P["Place queen ♛"] --> R["solve(row + 1)"]
+    R -- "success" --> F
+    R -- "dead end" --> B["Remove queen ↩️ (backtrack)"] --> C
+    V -- "unsafe" --> C
+```
+
+## ✨ Features
+
+- ♛ **Interactive visualisation** of the N-Queens problem
+- 🔢 **Choose the board size** — from 1 up to 8 queens
+- 🎚️ **Speed slider** to slow down or speed up the animation
+- 🧮 **All arrangements** — every valid board for the chosen N is drawn
+- 🎨 **Colour-coded checks** for safe and attacked squares while backtracking
+- 📱 **Responsive** on desktop and mobile
+
+## 🎮 How to Use
+
+1. Enter the **number of queens** (1–8).
+2. Use the **slider** to set the visualisation speed.
+3. Click **Play** to start.
+4. Watch each board fill in as the algorithm explores and backtracks.
+
+## 🚀 Getting Started
+
+No build step — it's plain HTML, CSS and JavaScript.
+
+```bash
+git clone https://github.com/Shariq2003/N-Queen-Visualiser.git
+cd N-Queen-Visualiser
+# open index.html in your browser, or serve it:
+npx serve .
+```
+
+<details>
+<summary><b>📁 Project structure</b></summary>
+
+```text
+N-Queen-Visualiser/
+├── index.html   # layout, controls
+├── index.css    # board & UI styles
+└── chess.js     # Queen class: solveQueen, isValid, delay, clearColor
+```
+
+</details>
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a branch: `git checkout -b feature/YourFeature`
+3. Commit: `git commit -m "Add some feature"`
+4. Push: `git push origin feature/YourFeature`
+5. Open a Pull Request
+
+---
+
+<div align="center">
+
+Built by **[Shariq](https://github.com/Shariq2003)** · [LinkedIn](https://www.linkedin.com/in/shariq-sd)
+
+⭐ If you like this project, consider giving it a star!
+
+</div>
